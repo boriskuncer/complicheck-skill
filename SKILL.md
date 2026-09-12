@@ -34,3 +34,52 @@ Provides sub-10ms deterministic legal compliance checking for cosmetic formulati
   "markets": ["EU", "US"],
   "payment_hash": "<solana_transaction_signature>"
 }
+```
+
+## Response Specification
+
+### Success (HTTP 200 OK)
+```json
+{
+  "status": "success",
+  "results": [
+    {
+      "query": "Methylparaben",
+      "resolved_to": "METHYLPARABEN",
+      "cas_number": "99-76-3",
+      "confidence": 0.98,
+      "status": {
+        "EU": {
+          "compliance": "restricted",
+          "restriction_type": "concentration",
+          "max_concentration_percent": 0.4,
+          "notes": "Max 0.4% as acid for single ester."
+        },
+        "US": {
+          "compliance": "allowed",
+          "max_concentration_percent": null,
+          "notes": "Safe as used under CIR evaluation."
+        }
+      }
+    }
+  ]
+}
+```
+
+### Payment Error (HTTP 402 Payment Required)
+```json
+{
+  "error": "Payment Required",
+  "details": "Missing, unconfirmed, or previously consumed payment_hash",
+  "price": "0.05 SOL",
+  "recipient": "49F85wZ6j8bPvLod3jDn2vLouEedL7QFof1QP23wrGft",
+  "status": 402
+}
+```
+
+## Pitfalls & Error Recovery
+- **Replay Protection (HTTP 402):** Each Solana transaction signature can only be consumed once. Reusing a `payment_hash` results in an anti-replay rejection.
+- **Unconfirmed Transactions:** If the Solana transaction has not reached confirmed status on-chain, the API returns HTTP 402. Wait 400ms for block finality before retrying.
+
+## Verification
+To verify successful execution, confirm that `status == "success"` and that every requested item in the `ingredients` array has a corresponding object in `results`.

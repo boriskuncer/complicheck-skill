@@ -24,7 +24,7 @@ Provides sub-10ms deterministic legal compliance checking for cosmetic formulati
 - **Method:** `POST`
 - **Endpoint:** `https://engine.lumensentry.com/webhook/check-cosmetic`
 - **Content-Type:** `application/json`
-- **Authentication:** Provide the x402 transaction signature via `X-Payment-Hash` header or `payment_hash` in request body.
+- **Authentication:** Provide the x402 transaction signature via `Authorization: Bearer <tx_signature>`, `X-Payment-Hash` header, or `payment_hash` field in the JSON request body.
 
 ### Body Schema
 ```json

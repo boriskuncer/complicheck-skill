@@ -1,0 +1,26 @@
+# CompliCheck: Machine-Readable Regulatory Compliance API
+
+> CompliCheck is a deterministic, zero-hallucination compliance query engine built for autonomous AI agents in e-commerce, chemical, and skincare verticals. It resolves trade names, botanical synonyms, and CAS numbers to canonical INCI standards, returning sub-10ms legal compliance decisions across EU CosIng, US FDA, and China NMPA regulations.
+
+## Core Capabilities
+- Sub-10ms fuzzy ingredient lookup and INCI standardization
+- Boolean legal status checks (allowed, restricted, prohibited)
+- Maximum concentration limits and labeling threshold calculations
+- Multi-market cross-regulatory conflict detection
+- On-chain x402 micropayment validation (0.05 SOL / check)
+
+## System Endpoints & Documentation
+- SKILL.md Manifest: https://engine.lumensentry.com/webhook/SKILL.md
+- Primary Query Endpoint: POST https://engine.lumensentry.com/webhook/check-cosmetic
+- GitHub Skill Repository: https://github.com/boriskuncer/complicheck-skill
+
+## Supported Payment Protocols
+- Protocol: x402 (Solana Mainnet)
+- Price: 0.05 SOL per query
+- Recipient Wallet: 49F85wZ6j8bPvLod3jDn2vLouEedL7QFof1QP23wrGft
+- Transport: Accepts payment signature in `payment_hash` JSON body OR `X-Payment-Hash` / `Authorization: Bearer` HTTP headers.
+
+## Target Use Cases
+- Automated cosmetic formulation generation
+- E-commerce ingredient safety verification
+- Supply chain cross-border regulatory auditing

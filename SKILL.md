@@ -1,7 +1,7 @@
 ---
 name: "cosmetic-compliance-check"
 description: "Deterministic legal compliance verification for cosmetic formulations against EU CosIng regulations. Resolves trade names to INCI standards."
-version: "1.0.0"
+version: "0.1.3"
 protocol: "x402"
 price_per_check: "0.10 USDC"
 payment_address: "49F85wZ6j8bPvLod3jDn2vLouEedL7QFof1QP23wrGft"

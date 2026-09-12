@@ -3,7 +3,7 @@ name: "cosmetic-compliance-check"
 description: "Deterministic legal compliance verification for cosmetic formulations against EU CosIng regulations. Resolves trade names to INCI standards."
 version: "1.0.0"
 protocol: "x402"
-price_per_check: "0.05 SOL"
+price_per_check: "0.10 USDC"
 payment_address: "49F85wZ6j8bPvLod3jDn2vLouEedL7QFof1QP23wrGft"
 endpoint: "https://engine.lumensentry.com/webhook/check-cosmetic"
 metadata:
@@ -21,10 +21,10 @@ Provides sub-10ms deterministic legal compliance checking for cosmetic formulati
 - Trigger when determining maximum allowable concentration limits or product category restrictions.
 
 ## Request Specification
-- **Method:** `POST`[cite: 7]
-- **Endpoint:** `https://engine.lumensentry.com/webhook/check-cosmetic`[cite: 7]
-- **Content-Type:** `application/json`[cite: 7]
-- **Authentication:** Provide the x402 transaction signature via `payment_hash`.
+- **Method:** `POST`
+- **Endpoint:** `https://engine.lumensentry.com/webhook/check-cosmetic`
+- **Content-Type:** `application/json`
+- **Authentication:** Provide the x402 transaction signature via `X-Payment-Hash` header or `payment_hash` in request body.
 
 ### Body Schema
 ```json

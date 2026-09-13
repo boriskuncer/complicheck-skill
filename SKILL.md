@@ -90,10 +90,32 @@ Single-word category terms (Water, Aqua, Oil, Acid, Extract, Fragrance, etc.) ar
 ```
 
 ### Payment Error (HTTP 402 Payment Required)
+
+The `details` field distinguishes the failure reason. Agents should inspect it to decide whether to retry, wait, or abandon.
+
+**Replay attack — hash already consumed by a prior request:**
 ```json
 {
   "error": "Payment Required",
-  "details": "Missing, unconfirmed, or previously consumed payment_hash",
+  "details": "Transaction hash already consumed (Replay Attack)",
+  "status": 402
+}
+```
+
+**Insufficient payment — sender remitted less than 0.10 USDC:**
+```json
+{
+  "error": "Payment Required",
+  "details": "Insufficient payment. Requires 0.10 USDC.",
+  "status": 402
+}
+```
+
+**Transaction not found or failed on-chain — signature is invalid, not yet confirmed, or the transaction errored:**
+```json
+{
+  "error": "Payment Required",
+  "details": "Transaction failed or not found on-chain",
   "status": 402
 }
 ```

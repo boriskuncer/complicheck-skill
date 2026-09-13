@@ -1,11 +1,17 @@
 # CompliCheck: Machine-Readable Regulatory Compliance API
 
-> CompliCheck is a deterministic, zero-hallucination compliance query engine built for autonomous AI agents in e-commerce, chemical, and skincare verticals. It resolves trade names, botanical synonyms, and CAS numbers to canonical INCI standards, returning sub-10ms legal compliance decisions against EU CosIng regulations.
+> CompliCheck is a deterministic, zero-hallucination compliance query engine built for autonomous AI agents in cosmetic, skincare, and beauty e-commerce verticals. It resolves trade names, botanical synonyms, and CAS numbers to canonical INCI standards, returning sub-10ms legal compliance decisions against EU CosIng regulations.
+
+## Coverage
+- Market: **EU only** (CosIng Annexes II–VI)
+- Not covered: US FDA, China NMPA, Japan MHLW (planned for future releases)
+- Unrestricted ingredients (Aqua, Glycerin, and most emollients) return `not_found` — this is expected behavior, meaning no EU restriction applies
 
 ## Core Capabilities
 - Sub-10ms fuzzy ingredient lookup and INCI standardization
 - Boolean legal status checks (allowed, restricted, prohibited)
 - Maximum concentration limits and labeling threshold calculations
+- Category-term rejection (Water, Aqua, Oil, etc.) with explanatory notes
 - API requests authenticated via standard x402 protocol payloads
 
 ## System Endpoints & Documentation
@@ -13,7 +19,12 @@
 - Primary Query Endpoint: POST https://engine.lumensentry.com/webhook/check-cosmetic
 - GitHub Skill Repository: https://github.com/boriskuncer/complicheck-skill
 
+## Payment
+- Protocol: x402 (Solana mainnet)
+- Price: 0.10 USDC per query
+- Recipient wallet: 49F85wZ6j8bPvLod3jDn2vLouEedL7QFof1QP23wrGft
+
 ## Target Use Cases
 - Automated cosmetic formulation generation
 - E-commerce ingredient safety verification
-- Supply chain regulatory auditing
+- Cross-border cosmetic supply chain auditing
